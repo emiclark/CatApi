@@ -12,17 +12,17 @@ class Cat {
     
     var title: String?
     var image_url: String?
-    var description: String?
+    var catDescription: String?
     
     init(json: [String:Any]) {
         guard let title = json["title"] as? String,
         let image_url = json["image_url"] as? String,
-        let description = json["description"] as? String
+        let catDescription = json["description"] as? String
             else {print("error creating object"); return }
         
         self.title = title
         self.image_url = image_url
-        self.description = description
+        self.catDescription = catDescription
     }
 }
 
