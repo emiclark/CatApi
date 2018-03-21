@@ -26,7 +26,7 @@ class Cat {
     }
 }
 
-
+// JSON sample
 //    "title": "Keyboard Cat",
 //    "timestamp": "2018-03-19T23:50:11Z",
 //    "image_url": "https:\/\/triplebyte-cats.s3.amazonaws.com\/keyboard.jpg",

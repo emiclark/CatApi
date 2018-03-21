@@ -24,21 +24,5 @@ class CatDataStore {
             completion(self.Cats)
         }
     }
-    
-    func downloadImages(url: URL, completion: @escaping(Data)->(UIImage)) {
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { print("data for image is nil"); return }
-            let catImage: UIImage = UIImage(from: data)
-            completion(catImage)
-        }.resume()
-    }
 }
-
-//-----
-
-//            cell.catImage.image = UIImage(data: data)
-//        }
-//        if let data = try? Data(contentsOf: url!)
-//        {
 

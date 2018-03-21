@@ -24,18 +24,15 @@ class MyTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return catds.Cats.count
     }
 
@@ -43,16 +40,22 @@ class MyTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
         
         let url = URL(string: catds.Cats[indexPath.row].image_url!)
-        catds.downloadImages(url: url, completion: { (catDataImage) in
-            
-            DispatchQueue.main.async {
-                cell.catImage.image = UIImage(data: Data)
-                self.tableView.reloadData()
+        
+        // download images async
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+
+            if error != nil {
+                print(error!)
+                return
             }
-        })
+
+            DispatchQueue.main.async {
+                cell.catImage.image = UIImage(data: data!)
+            }
+        }).resume()
     
         cell.title.text = catds.Cats[indexPath.row].title
         cell.catDescription.text = catds.Cats[indexPath.row].catDescription
         return cell
-    }
+    }    
 }
