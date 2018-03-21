@@ -9,12 +9,13 @@
 import UIKit
 
 class MyTableViewController: UITableViewController {
-
+    let catds = CatDataStore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ApiClient.getData { (catJson) in
-            print(catJson)
+        catds.getCatData { (CatArray) in
+            print(CatArray)
         }
     }
 

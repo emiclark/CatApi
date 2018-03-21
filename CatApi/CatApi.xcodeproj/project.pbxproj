@@ -14,6 +14,7 @@
 		008995492061E56600ED5EAF /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008995482061E56600ED5EAF /* ApiClient.swift */; };
 		0089954B2061E73100ED5EAF /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0089954A2061E73100ED5EAF /* MyTableViewController.swift */; };
 		0089954D2061E81600ED5EAF /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0089954C2061E81600ED5EAF /* Cat.swift */; };
+		0089954F2061EB6400ED5EAF /* CatDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0089954E2061EB6400ED5EAF /* CatDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		008995482061E56600ED5EAF /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		0089954A2061E73100ED5EAF /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		0089954C2061E81600ED5EAF /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		0089954E2061EB6400ED5EAF /* CatDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				008995362061E38300ED5EAF /* AppDelegate.swift */,
 				0089953A2061E38300ED5EAF /* Main.storyboard */,
+				0089954E2061EB6400ED5EAF /* CatDataStore.swift */,
 				0089954C2061E81600ED5EAF /* Cat.swift */,
 				008995482061E56600ED5EAF /* ApiClient.swift */,
 				0089954A2061E73100ED5EAF /* MyTableViewController.swift */,
@@ -144,6 +147,7 @@
 			files = (
 				0089954D2061E81600ED5EAF /* Cat.swift in Sources */,
 				008995372061E38300ED5EAF /* AppDelegate.swift in Sources */,
+				0089954F2061EB6400ED5EAF /* CatDataStore.swift in Sources */,
 				0089954B2061E73100ED5EAF /* MyTableViewController.swift in Sources */,
 				008995492061E56600ED5EAF /* ApiClient.swift in Sources */,
 			);
