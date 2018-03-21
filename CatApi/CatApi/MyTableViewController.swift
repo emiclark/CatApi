@@ -16,7 +16,11 @@ class MyTableViewController: UITableViewController {
 
         catds.getCatData { (CatArray) in
             print(CatArray)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,13 +19,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="188" id="kYx-nk-owv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="188" id="kYx-nk-owv" customClass="MyTableViewCell" customModule="CatApi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="188"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kYx-nk-owv" id="LpE-vQ-0BP">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cVT-Qf-Dks">
+                                            <rect key="frame" x="16" y="34" width="134" height="119"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6s-hj-5eu">
+                                            <rect key="frame" x="166" y="34" width="193" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="193" id="DZV-aM-3I7"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBq-R7-mk5">
+                                            <rect key="frame" x="166" y="63" width="193" height="90"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="90" id="cQg-Kx-L6t"/>
+                                                <constraint firstAttribute="width" constant="193" id="yTu-uK-5V5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="x6s-hj-5eu" firstAttribute="trailing" secondItem="LpE-vQ-0BP" secondAttribute="trailingMargin" id="2xi-zL-cBu"/>
+                                        <constraint firstItem="x6s-hj-5eu" firstAttribute="leading" secondItem="cVT-Qf-Dks" secondAttribute="trailing" constant="16" id="Bxq-kO-S1X"/>
+                                        <constraint firstItem="CBq-R7-mk5" firstAttribute="top" secondItem="x6s-hj-5eu" secondAttribute="bottom" constant="8" id="DpK-jC-tlu"/>
+                                        <constraint firstItem="cVT-Qf-Dks" firstAttribute="top" secondItem="LpE-vQ-0BP" secondAttribute="top" constant="34" id="brB-VQ-Q22"/>
+                                        <constraint firstItem="CBq-R7-mk5" firstAttribute="leading" secondItem="cVT-Qf-Dks" secondAttribute="trailing" constant="16" id="g4j-2l-bwF"/>
+                                        <constraint firstItem="x6s-hj-5eu" firstAttribute="top" secondItem="LpE-vQ-0BP" secondAttribute="top" constant="34" id="hTX-Al-IVh"/>
+                                        <constraint firstItem="cVT-Qf-Dks" firstAttribute="leading" secondItem="LpE-vQ-0BP" secondAttribute="leading" constant="16" id="lBh-mN-rCk"/>
+                                        <constraint firstAttribute="bottom" secondItem="cVT-Qf-Dks" secondAttribute="bottom" constant="34.5" id="pKM-a5-XnW"/>
+                                        <constraint firstItem="CBq-R7-mk5" firstAttribute="trailing" secondItem="LpE-vQ-0BP" secondAttribute="trailingMargin" id="wiM-6m-Q2V"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="catDescription" destination="CBq-R7-mk5" id="kkZ-eD-vbZ"/>
+                                    <outlet property="catImage" destination="cVT-Qf-Dks" id="82o-pd-BaX"/>
+                                    <outlet property="title" destination="x6s-hj-5eu" id="ppw-OO-bNw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
