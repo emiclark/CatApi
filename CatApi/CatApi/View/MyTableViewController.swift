@@ -40,17 +40,20 @@ class MyTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var urlImageString: String?
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
         
         let urlString = catds.Cats[indexPath.row].image_url
         
         let url = URL(string: urlString!)
+        urlImageString = urlString!
         
         cell.catImage.image = #imageLiteral(resourceName: "placeholder")
         cell.title.text = catds.Cats[indexPath.row].title
         cell.catDescription.text = catds.Cats[indexPath.row].catDescription
         
-        // get catImage async
+        // download cat image async
         if let img = imageCache.object(forKey: urlString! as NSString) {
             cell.catImage.image = img
         } else {
@@ -65,13 +68,15 @@ class MyTableViewController: UITableViewController {
 
                 DispatchQueue.main.async {
                     let imageToCache = UIImage(data: data)
+                    
+                    // check to ensure get loaded into the correct cells
+                    if urlImageString == urlString {
+                        cell.catImage.image = imageToCache
+                    }
                     self.imageCache.setObject(imageToCache!, forKey: urlString! as NSString)
-                    cell.catImage.image = imageToCache
                 }
             }.resume()
         }
-        
         return cell
     }
-
 }

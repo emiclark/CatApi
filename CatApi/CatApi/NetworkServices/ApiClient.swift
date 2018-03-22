@@ -12,9 +12,7 @@ class ApiClient {
     static let imageCache = NSCache<NSString, UIImage>()
 
     class func getData(completion: @escaping(Array<Any>)->()) {
-//        let urlString = "https://chex-triplebyte.herokuapp.com/api/cats?page=1"
-        let urlString = "https://chex-triplebyte.herokuapp.com/api/cats"
-        
+        let urlString = "https://chex-triplebyte.herokuapp.com/api/cats?page=1"
         let urlConverted = URL(string: urlString)
         
         guard let url = urlConverted else {print("error in url"); return }
