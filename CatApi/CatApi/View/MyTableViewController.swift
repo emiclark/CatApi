@@ -20,13 +20,6 @@ class MyTableViewController: UITableViewController {
         super.viewDidLoad()
         
         catds.delegate = self
-        
-//        catds.getCatData { (CatArray) in
-//            print(CatArray)
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
         catds.getCatDataWithPageNum(pageNum: pageNum)
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -92,15 +85,11 @@ class MyTableViewController: UITableViewController {
         if continuousScrollIndexPath != indexPath.row {
             continuousScrollIndexPath = indexPath.row
             let lastElement = self.catds.Cats.count - 3
-            print("at row: \(indexPath.row), \(lastElement)")
             if indexPath.row == lastElement {
                 print("Getting more cat images - pageNum:",pageNum,"\n")
                 catds.getCatDataWithPageNum(pageNum: pageNum)
-                print("got more cat images: page:\(self.pageNum)")
                 self.pageNum += 1
             }
-        } else {
-            print("Same Index path was hit!!\n")
         }
     }
 }
