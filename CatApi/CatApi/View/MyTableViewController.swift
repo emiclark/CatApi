@@ -13,15 +13,23 @@ class MyTableViewController: UITableViewController {
     let catds = CatDataStore()
     let imageFromCache = UIImage()
     let imageCache = NSCache<NSString, UIImage>()
+    var continuousScrollIndexPath = 0
+    var pageNum = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        catds.getCatData { (CatArray) in
-            print(CatArray)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        
+        catds.delegate = self
+        
+//        catds.getCatData { (CatArray) in
+//            print(CatArray)
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+        catds.getCatDataWithPageNum(pageNum: pageNum)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 
@@ -78,5 +86,29 @@ class MyTableViewController: UITableViewController {
             }.resume()
         }
         return cell
+    }
+  
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if continuousScrollIndexPath != indexPath.row {
+            continuousScrollIndexPath = indexPath.row
+            let lastElement = self.catds.Cats.count - 3
+            print("at row: \(indexPath.row), \(lastElement)")
+            if indexPath.row == lastElement {
+                print("Getting more cat images - pageNum:",pageNum,"\n")
+                catds.getCatDataWithPageNum(pageNum: pageNum)
+                print("got more cat images: page:\(self.pageNum)")
+                self.pageNum += 1
+            }
+        } else {
+            print("Same Index path was hit!!\n")
+        }
+    }
+}
+
+extension MyTableViewController : reloadCatDataDelegate {
+    func UpdateUI() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
